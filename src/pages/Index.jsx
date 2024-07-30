@@ -74,30 +74,20 @@ const Index = () => {
                 <p className="text-sm text-orange-600 flex items-center">
                   <ThumbsUp className="w-4 h-4 mr-1" /> {story.points}
                 </p>
-                <p className="text-sm text-orange-600 flex items-center">
-                  <MessageSquare className="w-4 h-4 mr-1" /> {story.num_comments}
-                </p>
-              </div>
-              <div className="flex space-x-2">
-                <Button
-                  variant="outline"
-                  className="text-orange-500 hover:text-orange-600 hover:bg-orange-100"
-                  onClick={() => window.open(story.url, '_blank')}
-                >
-                  Read more
-                </Button>
-                <Button
-                  variant="outline"
-                  className="text-orange-500 hover:text-orange-600 hover:bg-orange-100"
+                <button
                   onClick={() => toggleComments(story.objectID)}
+                  className="text-sm text-orange-600 flex items-center hover:text-orange-700"
                 >
-                  {expandedStory === story.objectID ? (
-                    <>Hide Comments <ChevronUp className="ml-1 h-4 w-4" /></>
-                  ) : (
-                    <>Show Comments <ChevronDown className="ml-1 h-4 w-4" /></>
-                  )}
-                </Button>
+                  <MessageSquare className="w-4 h-4 mr-1" /> {story.num_comments}
+                </button>
               </div>
+              <Button
+                variant="outline"
+                className="text-orange-500 hover:text-orange-600 hover:bg-orange-100"
+                onClick={() => window.open(story.url, '_blank')}
+              >
+                Read more
+              </Button>
               {expandedStory === story.objectID && (
                 <div className="mt-4 border-t border-orange-200 pt-4">
                   <Comments storyId={story.objectID} />
