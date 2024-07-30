@@ -54,7 +54,7 @@ const Index = () => {
             <CardHeader className="bg-accent">
               <CardTitle className="text-primary">{story.title}</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pt-4">
               <p className="text-sm text-muted-foreground mb-2">Upvotes: {story.points}</p>
               <Button
                 variant="outline"
