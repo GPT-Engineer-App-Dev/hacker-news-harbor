@@ -23,13 +23,13 @@ const Index = () => {
   );
 
   const SkeletonStory = () => (
-    <Card className="mb-4">
+    <Card className="mb-4 border-orange-200">
       <CardHeader>
-        <Skeleton className="h-4 w-3/4" />
+        <Skeleton className="h-4 w-3/4 bg-orange-100" />
       </CardHeader>
       <CardContent>
-        <Skeleton className="h-4 w-1/4 mb-2" />
-        <Skeleton className="h-4 w-1/2" />
+        <Skeleton className="h-4 w-1/4 mb-2 bg-orange-100" />
+        <Skeleton className="h-4 w-1/2 bg-orange-100" />
       </CardContent>
     </Card>
   );
@@ -37,28 +37,28 @@ const Index = () => {
   if (error) return <div className="text-center text-red-500">Error fetching stories</div>;
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Top 100 Hacker News Stories</h1>
+    <div className="container mx-auto p-4 bg-orange-50">
+      <h1 className="text-3xl font-bold mb-6 text-orange-800">Top 100 Hacker News Stories</h1>
       <Input
         type="text"
         placeholder="Search stories..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="mb-6"
+        className="mb-6 border-orange-300 focus:border-orange-500"
       />
       {isLoading ? (
         Array(10).fill().map((_, index) => <SkeletonStory key={index} />)
       ) : (
         filteredStories?.map(story => (
-          <Card key={story.objectID} className="mb-4">
+          <Card key={story.objectID} className="mb-4 border-orange-200 hover:border-orange-400 transition-colors">
             <CardHeader>
-              <CardTitle>{story.title}</CardTitle>
+              <CardTitle className="text-orange-800">{story.title}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-gray-500 mb-2">Upvotes: {story.points}</p>
+              <p className="text-sm text-orange-600 mb-2">Upvotes: {story.points}</p>
               <Button
                 variant="link"
-                className="p-0"
+                className="p-0 text-orange-500 hover:text-orange-700"
                 onClick={() => window.open(story.url, '_blank')}
               >
                 Read more
