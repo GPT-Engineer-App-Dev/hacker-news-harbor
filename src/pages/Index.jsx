@@ -99,7 +99,9 @@ const Index = () => {
                 </Button>
               </div>
               {expandedStory === story.objectID && (
-                <Comments storyId={story.objectID} />
+                <div className="mt-4 border-t border-orange-200 pt-4">
+                  <Comments storyId={story.objectID} />
+                </div>
               )}
             </CardContent>
           </Card>
