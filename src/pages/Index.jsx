@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { MessageSquare, ThumbsUp } from 'lucide-react';
 
 const fetchTopStories = async () => {
   const response = await axios.get('https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=100');
@@ -28,7 +29,10 @@ const Index = () => {
         <Skeleton className="h-4 w-3/4" />
       </CardHeader>
       <CardContent>
-        <Skeleton className="h-4 w-1/4 mb-2" />
+        <div className="flex justify-between mb-2">
+          <Skeleton className="h-4 w-1/4" />
+          <Skeleton className="h-4 w-1/4" />
+        </div>
         <Skeleton className="h-4 w-1/2" />
       </CardContent>
     </Card>
@@ -55,7 +59,14 @@ const Index = () => {
               <CardTitle className="text-orange-800">{story.title}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-orange-600 mb-2">Upvotes: {story.points}</p>
+              <div className="flex justify-between items-center mb-2">
+                <p className="text-sm text-orange-600 flex items-center">
+                  <ThumbsUp className="w-4 h-4 mr-1" /> {story.points}
+                </p>
+                <p className="text-sm text-orange-600 flex items-center">
+                  <MessageSquare className="w-4 h-4 mr-1" /> {story.num_comments}
+                </p>
+              </div>
               <Button
                 variant="outline"
                 className="text-orange-500 hover:text-orange-600 hover:bg-orange-100"
