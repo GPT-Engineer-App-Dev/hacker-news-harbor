@@ -37,28 +37,28 @@ const Index = () => {
   if (error) return <div className="text-center text-red-500">Error fetching stories</div>;
 
   return (
-    <div className="container mx-auto p-4 bg-secondary">
-      <h1 className="text-3xl font-bold mb-6 text-primary">Top 100 Hacker News Stories</h1>
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-6">Top 100 Hacker News Stories</h1>
       <Input
         type="text"
         placeholder="Search stories..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="mb-6 bg-white"
+        className="mb-6"
       />
       {isLoading ? (
         Array(10).fill().map((_, index) => <SkeletonStory key={index} />)
       ) : (
         filteredStories?.map(story => (
-          <Card key={story.objectID} className="mb-4 border-primary border-2">
-            <CardHeader className="bg-accent">
-              <CardTitle className="text-primary">{story.title}</CardTitle>
+          <Card key={story.objectID} className="mb-4">
+            <CardHeader>
+              <CardTitle>{story.title}</CardTitle>
             </CardHeader>
-            <CardContent className="pt-4">
-              <p className="text-sm text-muted-foreground mb-2">Upvotes: {story.points}</p>
+            <CardContent>
+              <p className="text-sm text-gray-500 mb-2">Upvotes: {story.points}</p>
               <Button
-                variant="outline"
-                className="text-primary hover:bg-primary hover:text-primary-foreground"
+                variant="link"
+                className="p-0"
                 onClick={() => window.open(story.url, '_blank')}
               >
                 Read more
