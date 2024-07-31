@@ -26,6 +26,9 @@ const Index = () => {
     queryFn: fetchTopStories,
   });
 
+  // New state for sorting
+  const [sortBy, setSortBy] = useState('points');
+
   const filteredStories = stories?.filter(story =>
     story.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
